@@ -1,0 +1,95 @@
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.madhub.socialmediascheduler">
+
+    <!-- 
+        The manifest file declares essential information about the application, including 
+        components and permissions required for a social media scheduling tool. 
+        This application automates content management across multiple platforms. 
+    -->
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        
+        <!-- 
+            The MainActivity serves as the entry point of the application.
+            In this scenario, when the user opens the app, this activity initializes 
+            the user interface and allows them to configure their social media accounts 
+            for scheduling posts.
+        -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 
+            The AutomationService is a background service that automates the posting 
+            of scheduled content to various social media platforms. 
+            Workflow step: This service runs in the background to ensure that posts 
+            are published at the configured times without requiring user intervention.
+        -->
+        <service
+            android:name=".AutomationService"
+            android:enabled="true"
+            android:exported="false">
+        </service>
+    </application>
+
+    <!-- 
+        Permissions are declared here to enable specific functionalities of the app. 
+        In this scenario, these permissions ensure that the application can access the 
+        internet for posting content on social media platforms and can read/write content 
+        to storage for managing media files.
+    -->
+
+    <!-- 
+        The INTERNET permission allows the application to connect to the internet to 
+        send scheduled posts to various social media platforms such as Facebook, Instagram, 
+        and TikTok.
+    -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- 
+        The WRITE_EXTERNAL_STORAGE permission allows the application to save media files 
+        required for posts. Users may upload images or videos, which need to be stored 
+        on the device. 
+    -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    
+    <!-- 
+        The READ_EXTERNAL_STORAGE permission enables the app to read media files 
+        stored on the device. This is crucial for selecting images or videos for 
+        scheduling posts.
+    -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <!-- 
+        The ACCESS_NETWORK_STATE permission checks if the device is connected to the internet. 
+        This is useful to ensure that scheduled posts can be uploaded successfully 
+        at the right times.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <!-- 
+        By declaring these permissions, we ensure that the application can 
+        effectively manage social media content, providing a seamless user experience 
+        while adhering to platform compliance standards.
+    -->
+
+</manifest>
+```
+
+### Explanation of the AndroidManifest.xml Configuration
+
+- **MainActivity**: Serves as the entry point of the application, allowing users to interactively set up their social media accounts and schedule posts.
+- **AutomationService**: Runs in the background to reliably automate the publication of scheduled posts, ensuring that users can manage their social media presence effectively even when they are not actively using the app.
+- **Permissions**: The selected permissions are crucial for the app's functionality. They enable internet connectivity for posting, and access to external storage for media management, which is essential for a social media scheduling tool.
+
+This manifest provides a structured approach to building a social media scheduler tool using MadHub’s features, ensuring it operates efficiently while adhering to best practices and compliance standards.
